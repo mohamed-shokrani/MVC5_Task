@@ -1,0 +1,19 @@
+﻿@using MVC5_Task.Dto_s;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<EmployeeDto>
+
+<div class="text-center">
+    <div>
+        @foreach (var item in Model)
+        {
+            <p>@item.EmployeeName</p>
+            <p>@item.ProjectName</p>
+            <p>@item.TotalHours</p>
+            <p>@item.DepartmentName</p>
+        }
+        <a class="btn btn-outline-info" asp-action="Create" type="button">Create</a>
+
+    </div>
+</div>
