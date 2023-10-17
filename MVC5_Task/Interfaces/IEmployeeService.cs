@@ -7,6 +7,7 @@ namespace MVC5_Task.Interfaces
 {
     public interface IEmployeeService
     {
-        Task<IReadOnlyList<EmployeeDto>> GetSingleEmployeeWithTotalProjectHours();
+        Task<IReadOnlyList<EmployeeProjectDto>> GetSingleEmployeeWithTotalProjectHours();
+        Task<byte[]> GenerateEmployeeReportService();
     }
 }

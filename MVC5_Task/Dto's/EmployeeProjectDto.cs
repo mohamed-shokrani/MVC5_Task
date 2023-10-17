@@ -2,7 +2,7 @@
 
 namespace MVC5_Task.Dto_s
 {
-    public class EmployeeDto
+    public record EmployeeProjectDto
     {
         [DisplayName("Employee Name")]
         public string EmployeeName { get; set; }

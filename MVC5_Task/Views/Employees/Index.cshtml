@@ -1,10 +1,9 @@
 ﻿@using MVC5_Task.Dto_s;
-@model IEnumerable<EmployeeDto>
+@model IEnumerable<EmployeeProjectDto>
 
 @{
-    ViewData["Employee Report"] = "Employee Report";
+    ViewData["Title"] = "Employee Report";
 }
-
 <div class="container">
     <h1 class="text-center ">Total Hours For Each Employee Report</h1>
 
@@ -18,21 +17,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @if (Model.Any())
             {
+                @foreach (var item in Model)
+                {
 
+                    <tr >
+                        <td>@item.EmployeeName</td>
+                        <td>@item.DepartmentName</td>
+                        <td>@item.ProjectName</td>
+                        <td>@item.TotalHours</td>
+
+                    </tr>
+                }
+
+            }
+            else
+            {
                 <tr>
-                    <td>@item.EmployeeName</td>
-                    <td>@item.DepartmentName</td>
-                    <td>@item.ProjectName</td>
-                    <td>@item.TotalHours</td>
-                   
+                    <td colspan="4">No data available.</td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <div class="text-center">
-        <a class="btn btn-outline-info" asp-action="GenerateReport" type="button">Generate Report</a>
-    </div>
+    @if (Model.Any())
+    {
+        <div class="text-center">
+            <a class="btn btn-outline-info" asp-action="GenerateReport" type="button">Generate Report</a>
+        </div>
+    }
 </div>
