@@ -28,8 +28,12 @@ namespace MVC5_Task.Services
                                 select new EmployeeDto 
                                 { EmployeeName = emp.Name,
                                   ProjectName = pro.Name,
-                                  TotalHours =  proEmp.Hours
-                                }).AsNoTracking().ToListAsync();
+                                  TotalHours =  proEmp.Hours,
+                                  DepartmentName =dep.Name
+                                }).OrderByDescending(x=>x.TotalHours)
+                                  .ThenBy(x => x.EmployeeName)
+                                  .AsNoTracking()
+                                  .ToListAsync();
 
             return result;
         }

@@ -1,19 +1,38 @@
 ﻿@using MVC5_Task.Dto_s;
-@{
-    ViewData["Title"] = "Home Page";
-}
 @model IEnumerable<EmployeeDto>
 
-<div class="text-center">
-    <div>
-        @foreach (var item in Model)
-        {
-            <p>@item.EmployeeName</p>
-            <p>@item.ProjectName</p>
-            <p>@item.TotalHours</p>
-            <p>@item.DepartmentName</p>
-        }
-        <a class="btn btn-outline-info" asp-action="Create" type="button">Create</a>
+@{
+    ViewData["Employee Report"] = "Employee Report";
+}
 
+<div class="container">
+    <h1 class="text-center ">Total Hours For Each Employee Report</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.EmployeeName)</th>
+                <th>@Html.DisplayNameFor(model => model.DepartmentName)</th>
+                <th>@Html.DisplayNameFor(model => model.ProjectName)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalHours)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td>@item.DepartmentName</td>
+                    <td>@item.ProjectName</td>
+                    <td>@item.TotalHours</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-outline-info" asp-action="GenerateReport" type="button">Generate Report</a>
     </div>
 </div>
